@@ -1,5 +1,8 @@
 package com.example.demo.services;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +19,28 @@ public class TouristRegService
 	{
 		return regrepo.save(d);
 	}
+//	
+//	public Tourist getTourist(int id)
+//	{
+//
+//		Optional<Tourist> opt = regrepo.findById(id);
+//		Tourist t = null;
+//		try
+//		{
+//			t = opt.get();
+//		}
+//		catch(NoSuchElementException e)
+//		{
+//			t = null;
+//		}
+//		return t;
+//		
+//	}
+	
+	public Tourist getTourist(int id)
+   {
+		return regrepo.getTourist(id);
+   }
+   
 	
 }

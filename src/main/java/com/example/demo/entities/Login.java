@@ -14,6 +14,12 @@ import javax.persistence.Table;
 @Table(name="login")
 public class Login 
 {
+	@Override
+	public String toString() {
+		return "Login [login_id=" + login_id + ", uid=" + uid + ", pwd=" + pwd + ", status=" + status + ", role_id="
+				+ role_id + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int login_id;

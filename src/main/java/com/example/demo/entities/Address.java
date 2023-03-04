@@ -11,6 +11,12 @@ import javax.persistence.Table;
 @Table(name="address")
 public class Address 
 {
+	@Override
+	public String toString() {
+		return "Address [address_id=" + address_id + ", addressline=" + addressline + ", district=" + district
+				+ ", city=" + city + ", state=" + state + ", country=" + country + ", postal_code=" + postal_code + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int address_id;

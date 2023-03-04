@@ -10,6 +10,10 @@ import javax.persistence.Table;
 public class Role {
 	@Id
 	int role_id;
+	@Override
+	public String toString() {
+		return "Role [role_id=" + role_id + ", role_name=" + role_name + "]";
+	}
 	@Column
 	String role_name;
 	public Role() {

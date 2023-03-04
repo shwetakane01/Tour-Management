@@ -2,8 +2,10 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Address;
@@ -38,8 +40,10 @@ public class TouristRegController
 	{
 		
 		System.out.println(treg);
+		
 		Role r = roleservice.getRole(1);
-		Login l = new Login(treg.getUid(),treg.getPwd(),0,r);
+		
+		Login l = new Login(treg.getUid(),treg.getPwd(),1,r);
 		
 		Login lsaved = lservice.save(l);
 		
@@ -52,5 +56,12 @@ public class TouristRegController
 		
 	
 		
+		
+	}
+	
+	@GetMapping("/touristgetbyid")
+	public Tourist getTourist(@RequestParam("tid") int id )
+	{
+		return trstserv.getTourist(id);
 	}
 }
