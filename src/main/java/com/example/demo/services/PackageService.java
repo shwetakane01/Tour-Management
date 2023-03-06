@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -13,8 +14,7 @@ import com.example.demo.repositories.PackageRepository;
 
 @Service
 public class PackageService {
-	@Autowired
-	PackageRepository prepo;
+	
 	
 	  @Autowired
 	  PackageRepository packageprepo;
@@ -41,18 +41,27 @@ public class PackageService {
 	
 	public AddPackage save(AddPackage p)
 	{
-		return prepo.save(p);
+		return packageprepo.save(p);
 	}
-	public boolean upload(int pid,byte[] data)
-	{
-		System.out.println("in service");
-		int n = packageprepo.uploadPhoto(pid,data);
-		System.out.println(n);
-		if(n==1)
-		{
-			return true;
-		}
-		else
-			return false;
+	
+//	
+//	public boolean upload(int pid,byte[] data)
+//	{
+//		System.out.println("in service");
+//		int n = packageprepo.uploadPhoto(pid,data);
+//		System.out.println(n);
+//		if(n==1)
+//		{
+//			return true;
+//		}
+//		else
+//			return false;
+//	}
+
+	public List<AddPackage> geAllPackages() {
+		
+		
+		return packageprepo.findAll();
 	}
+
 }
