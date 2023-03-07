@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,6 +83,13 @@ public class PlannedTourController
 		return ptserv.getAllPackagesByLocation(loc);
 	}
 
+	
+	@GetMapping("/getpackagesbydate")
+	public List<PlannedTour> getAllPackagesByDate(@RequestParam("sdate") Date startdate)
+	{
+		return ptserv.geAllPackagesByDate(startdate);
+//	      return ptour;	
+	}
 }
 
 /*{

@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,10 @@ public class PlannedTourService
 		return plannedtourrepo.getAllPackagesByLocation(loc);
 	}
 	
-	
+public List<PlannedTour> geAllPackagesByDate(Date startdate) {
+		
+		
+		return plannedtourrepo.getAllPackagesByDate(startdate);
+	}
 
 }

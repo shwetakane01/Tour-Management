@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -25,4 +26,7 @@ public interface PlannedTourRepository extends JpaRepository<PlannedTour, Intege
 	@Query(nativeQuery=true,value="select * from plannedtour  where packageid in(select package_id from package where locations like %:loc% ) and status=1")
 	public List<PlannedTour> getAllPackagesByLocation(String loc);
 
+	
+	@Query("SELECT e FROM PlannedTour e where e.startdate = :startdate ")
+	List<PlannedTour> getAllPackagesByDate(Date startdate);
 }
