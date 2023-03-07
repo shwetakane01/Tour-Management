@@ -37,13 +37,33 @@ public class PlannedTour
 	@JoinColumn(name = "employeeid")
 	Employee employeeid;
 
+	@Column
+	int status;
 	public PlannedTour() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	
+	public PlannedTour(Date startdate, Date lastdate, int availseats, Date lastdate_apply, AddPackage packageidobj,
+			Employee employeeid, int status) {
+		super();
+		this.startdate = startdate;
+		this.lastdate = lastdate;
+		this.availseats = availseats;
+		this.lastdate_apply = lastdate_apply;
+		this.packageidobj = packageidobj;
+		this.employeeid = employeeid;
+		this.status = status;
+	}
+
+
+
+
 	public PlannedTour(int tour_id, Date startdate, Date lastdate, int availseats, Date lastdate_apply,
-			AddPackage packageidobj, Employee employeeid) {
+			AddPackage packageidobj, Employee employeeid, int status) {
 		super();
 		this.tour_id = tour_id;
 		this.startdate = startdate;
@@ -52,20 +72,26 @@ public class PlannedTour
 		this.lastdate_apply = lastdate_apply;
 		this.packageidobj = packageidobj;
 		this.employeeid = employeeid;
+		this.status = status;
 	}
 
-	public PlannedTour(Date startdate, Date lastdate, int availseats, Date lastdate_apply, AddPackage packageidobj,
-			Employee employeeid) {
-		super();
-		this.startdate = startdate;
-		this.lastdate = lastdate;
-		this.availseats = availseats;
-		this.lastdate_apply = lastdate_apply;
-		this.packageidobj = packageidobj;
-		this.employeeid = employeeid;
+
+
+
+	public int getStatus() {
+		return status;
 	}
 
-	
+
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
+
+
 	public int getTour_id() {
 		return tour_id;
 	}
@@ -122,12 +148,16 @@ public class PlannedTour
 		this.employeeid = employeeid;
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "PlannedTour [tour_id=" + tour_id + ", startdate=" + startdate + ", lastdate=" + lastdate
 				+ ", availseats=" + availseats + ", lastdate_apply=" + lastdate_apply + ", packageidobj=" + packageidobj
-				+ ", employeeid=" + employeeid + "]";
+				+ ", employeeid=" + employeeid + ", status=" + status + "]";
 	}
+
 
 	
 	

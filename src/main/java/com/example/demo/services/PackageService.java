@@ -64,4 +64,9 @@ public class PackageService {
 		return packageprepo.findAll();
 	}
 
+//	public AddPackage getAllLocation(String loc) {
+//		// TODO Auto-generated method stub
+//		return packageprepo.getAllLocation(loc);
+//	}
+
 }

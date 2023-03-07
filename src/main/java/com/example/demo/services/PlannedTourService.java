@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,21 @@ public class PlannedTourService
 	public PlannedTour save (PlannedTour d)
 	{
 		return plannedtourrepo.save(d);
+	}
+
+	public List<PlannedTour> getAllPlanTour() {
+		// TODO Auto-generated method stub
+		return plannedtourrepo.getAllPlanTour();
+	}
+
+	public int approveTour(int id) {
+		// TODO Auto-generated method stub
+		return plannedtourrepo.approveTour(id);
+	}
+
+	public PlannedTour getAllPackagesByLocation(String loc) {
+		// TODO Auto-generated method stub
+		return plannedtourrepo.getAllPackagesByLocation(loc);
 	}
 	
 	
