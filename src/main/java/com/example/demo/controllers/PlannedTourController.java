@@ -77,7 +77,7 @@ public class PlannedTourController
 	}
 
 	@GetMapping("/getpackagesbylocation")
-	public PlannedTour getAllPackagesByLocation(@RequestParam("location") String loc)
+	public List<PlannedTour> getAllPackagesByLocation(@RequestParam("location") String loc)
 	{
 		return ptserv.getAllPackagesByLocation(loc);
 	}

@@ -30,7 +30,7 @@ public class PlannedTourService
 		return plannedtourrepo.approveTour(id);
 	}
 
-	public PlannedTour getAllPackagesByLocation(String loc) {
+	public List<PlannedTour> getAllPackagesByLocation(String loc) {
 		// TODO Auto-generated method stub
 		return plannedtourrepo.getAllPackagesByLocation(loc);
 	}

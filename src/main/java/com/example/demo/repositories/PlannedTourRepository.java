@@ -22,7 +22,7 @@ public interface PlannedTourRepository extends JpaRepository<PlannedTour, Intege
 	@Query("update PlannedTour p set p.status =1 where p.tour_id =:id")
 	public int approveTour(int id);
 	
-	@Query(nativeQuery=true,value="select * from plannedtour  where packageid in(select package_id from package where locations like %:loc%)")
-	public PlannedTour getAllPackagesByLocation(String loc);
+	@Query(nativeQuery=true,value="select * from plannedtour  where packageid in(select package_id from package where locations like %:loc% ) and status=1")
+	public List<PlannedTour> getAllPackagesByLocation(String loc);
 
 }
