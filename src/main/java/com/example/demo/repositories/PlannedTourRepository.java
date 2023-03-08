@@ -17,7 +17,7 @@ import com.example.demo.entities.PlannedTour;
 public interface PlannedTourRepository extends JpaRepository<PlannedTour, Integer> 
 {
 	@Query("SELECT p FROM PlannedTour p where p.status = 0")
-	public List<PlannedTour> getAllPlanTour();
+	public List<PlannedTour> getAllPlanTourForApproval();
 
 	@Modifying
 	@Query("update PlannedTour p set p.status =1 where p.tour_id =:id")
@@ -27,6 +27,9 @@ public interface PlannedTourRepository extends JpaRepository<PlannedTour, Intege
 	public List<PlannedTour> getAllPackagesByLocation(String loc);
 
 	
-	@Query("SELECT e FROM PlannedTour e where e.startdate = :startdate ")
+	@Query("SELECT e FROM PlannedTour e where e.startdate >= :startdate ")
 	List<PlannedTour> getAllPackagesByDate(Date startdate);
+
+//	@Query("Delete p from PlannedTour p where  p.tour_id =:id")
+//	public PlannedTour rejectTour(int id);
 }

@@ -66,9 +66,9 @@ public class PlannedTourController
 	}
 	
 	@GetMapping("/getallplantour")
-	public List<PlannedTour> getAllPlanTour()
+	public List<PlannedTour> getAllPlanTourForApproval()
 	{
-		return ptserv.getAllPlanTour();
+		return ptserv.getAllPlanTourForApproval();
 	}
 	
 	@GetMapping("/approvetour")
@@ -77,6 +77,15 @@ public class PlannedTourController
 		return ptserv.approveTour(id);
 	}
 
+	
+	@GetMapping("/rejecttour")
+	public void rejectTour(@RequestParam("tid") int id)
+	{
+		//return 
+				ptserv.rejectTour(id);
+	}
+	
+	
 	@GetMapping("/getpackagesbylocation")
 	public List<PlannedTour> getAllPackagesByLocation(@RequestParam("location") String loc)
 	{
@@ -88,7 +97,13 @@ public class PlannedTourController
 	public List<PlannedTour> getAllPackagesByDate(@RequestParam("sdate") Date startdate)
 	{
 		return ptserv.geAllPackagesByDate(startdate);
-//	      return ptour;	
+
+	}
+	
+	@GetMapping("/getAllPackagesForTourist")
+	public List<PlannedTour> getAllPAckagesForTourist()
+	{
+		return ptserv.getAllPackagesForTourist();
 	}
 }
 

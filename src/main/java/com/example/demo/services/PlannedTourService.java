@@ -21,9 +21,9 @@ public class PlannedTourService
 		return plannedtourrepo.save(d);
 	}
 
-	public List<PlannedTour> getAllPlanTour() {
+	public List<PlannedTour> getAllPlanTourForApproval() {
 		// TODO Auto-generated method stub
-		return plannedtourrepo.getAllPlanTour();
+		return plannedtourrepo.getAllPlanTourForApproval();
 	}
 
 	public int approveTour(int id) {
@@ -41,5 +41,15 @@ public List<PlannedTour> geAllPackagesByDate(Date startdate) {
 		
 		return plannedtourrepo.getAllPackagesByDate(startdate);
 	}
+
+public List<PlannedTour> getAllPackagesForTourist() {
+	// TODO Auto-generated method stub
+	return plannedtourrepo.findAll();
+}
+
+public void rejectTour(int id) {
+	plannedtourrepo.deleteById(id);
+	//return plannedtourrepo.rejectTour(id);
+}
 
 }

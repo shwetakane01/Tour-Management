@@ -64,7 +64,7 @@ public class AddPackage {
 		this.duration = duration;
 		this.tourist_capacity = tourist_capacity;
 		this.description = description;
-		this.locations = locations;
+		this.locations = locations.toLowerCase();
 	}
 	
 	
@@ -79,7 +79,7 @@ public class AddPackage {
 		this.duration = duration;
 		this.tourist_capacity = tourist_capacity;
 		this.description = description;
-		this.locations = locations;
+		this.locations = locations.toLowerCase();
 		this.packimageobj = packimageobj;
 	}
 
