@@ -30,6 +30,8 @@ public interface PlannedTourRepository extends JpaRepository<PlannedTour, Intege
 	@Query("SELECT e FROM PlannedTour e where e.startdate >= :startdate ")
 	List<PlannedTour> getAllPackagesByDate(Date startdate);
 
+	@Query(nativeQuery=true,value="SELECT * FROM plannedtour  where startdate >= now() ")
+	public List<PlannedTour> getAllPackagesForTourist();
 //	@Query("Delete p from PlannedTour p where  p.tour_id =:id")
 //	public PlannedTour rejectTour(int id);
 }

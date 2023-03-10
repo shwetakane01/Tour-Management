@@ -44,7 +44,7 @@ public List<PlannedTour> geAllPackagesByDate(Date startdate) {
 
 public List<PlannedTour> getAllPackagesForTourist() {
 	// TODO Auto-generated method stub
-	return plannedtourrepo.findAll();
+	return plannedtourrepo.getAllPackagesForTourist();
 }
 
 public void rejectTour(int id) {
