@@ -53,7 +53,7 @@ public class PlannedTourController
 		
 		AddPackage adpkg = packageserv.getPackageInfo(packagedummy.getPackageidobj());
 	
-		PlannedTour plantour = new PlannedTour(packagedummy.getStartdate(),packagedummy.getLastdate(),packagedummy.getAvailseats(), packagedummy.getLastdate_apply(), adpkg, employee,0);
+		PlannedTour plantour = new PlannedTour(packagedummy.getStartdate(),packagedummy.getLastdate(),packagedummy.getAvailseats(), packagedummy.getLastdate_apply(),packagedummy.getPackageprice(),packagedummy.getDuration(), adpkg, employee,0);
 		
 		System.out.println("***********"+adpkg+"***********");
 		PlannedTour demo = ptserv.save(plantour);
@@ -62,6 +62,23 @@ public class PlannedTourController
 		
 		return demo;
 		
+		
+	}
+	@GetMapping("/deletepackage")
+	public PlannedTour deletePackage(@RequestParam("packid") int pid)
+	{
+		int flag=0;
+		
+		PlannedTour plannedtourobj = ptserv.getPlannedtourbyid(pid);
+		
+		if(plannedtourobj==null)
+		{
+		 System.out.println("in if null");
+		packageserv.deletePackage(pid);
+		flag= 1;
+		}
+		
+		return plannedtourobj;
 		
 	}
 	
@@ -87,9 +104,10 @@ public class PlannedTourController
 	
 	
 	@GetMapping("/getpackagesbylocation")
-	public List<PlannedTour> getAllPackagesByLocation(@RequestParam("location") String loc)
+	public List<PlannedTour> getAllPackagesByLocation(@RequestParam("location") String loc,@RequestParam("boardinglocation") String bloc)
 	{
-		return ptserv.getAllPackagesByLocation(loc);
+		System.out.println(loc+" "+bloc);
+		return ptserv.getAllPackagesByLocation(loc,bloc);
 	}
 
 	
@@ -103,6 +121,7 @@ public class PlannedTourController
 	@GetMapping("/getAllPackagesForTourist")
 	public List<PlannedTour> getAllPAckagesForTourist()
 	{
+		
 		return ptserv.getAllPackagesForTourist();
 	}
 }

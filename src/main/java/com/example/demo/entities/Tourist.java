@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,8 @@ public class Tourist
 	@Column
 	String t_fname,t_lname,t_email,t_contact;
 	
+	@Column
+	Date t_bdate;
 	@OneToOne
 	@JoinColumn(name="t_addressid")
 	Address addressid;
@@ -37,30 +41,54 @@ public class Tourist
 
 	
 
-	public Tourist(int tourist_id, String t_fname, String t_lname, String t_email, String t_contact, Address addressid,
+	
+
+	public Tourist(String t_fname, String t_lname, String t_email, String t_contact, Date t_bdate, Address addressid,
 			Login loginid) {
+		super();
+		this.t_fname = t_fname;
+		this.t_lname = t_lname;
+		this.t_email = t_email;
+		this.t_contact = t_contact;
+		this.t_bdate = t_bdate;
+		this.addressid = addressid;
+		this.loginid = loginid;
+	}
+
+
+
+
+
+	public Date getT_bdate() {
+		return t_bdate;
+	}
+
+
+
+
+
+	public void setT_bdate(Date t_bdate) {
+		this.t_bdate = t_bdate;
+	}
+
+
+
+
+
+	public Tourist(int tourist_id, String t_fname, String t_lname, String t_email, String t_contact, Date t_bdate,
+			Address addressid, Login loginid) {
 		super();
 		this.tourist_id = tourist_id;
 		this.t_fname = t_fname;
 		this.t_lname = t_lname;
 		this.t_email = t_email;
 		this.t_contact = t_contact;
+		this.t_bdate = t_bdate;
 		this.addressid = addressid;
 		this.loginid = loginid;
 	}
 
-	
 
-
-	public Tourist(String t_fname, String t_lname, String t_email, String t_contact, Address addressid, Login loginid) {
-		super();
-		this.t_fname = t_fname;
-		this.t_lname = t_lname;
-		this.t_email = t_email;
-		this.t_contact = t_contact;
-		this.addressid = addressid;
-		this.loginid = loginid;
-	}
 
 
 
@@ -131,6 +159,17 @@ public class Tourist
 
 	public void setLoginid(Login loginid) {
 		this.loginid = loginid;
+	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Tourist [tourist_id=" + tourist_id + ", t_fname=" + t_fname + ", t_lname=" + t_lname + ", t_email="
+				+ t_email + ", t_contact=" + t_contact + ", t_bdate=" + t_bdate + ", addressid=" + addressid
+				+ ", loginid=" + loginid + "]";
 	}
 
 

@@ -44,7 +44,10 @@ public class PackageService {
 		return packageprepo.save(p);
 	}
 	
-//	
+	public void deletePackage(int pid) {
+		
+		packageprepo.deleteById(pid);
+	}
 //	public boolean upload(int pid,byte[] data)
 //	{
 //		System.out.println("in service");

@@ -36,11 +36,32 @@ public class TouristRegService
 //		return t;
 //		
 //	}
-	
+
+	//get tourist by its primary key tourist if id for booking tour
+	public Tourist getTouristByIdForBooking(int id)
+	{
+
+		Optional<Tourist> opt = regrepo.findById(id);
+		Tourist t = null;
+		try
+		{
+			t = opt.get();
+		}
+		catch(NoSuchElementException e)
+		{
+			t = null;
+		}
+		return t;
+		
+	}
 	public Tourist getTourist(int id)
    {
 		return regrepo.getTourist(id);
    }
-   
+	public Tourist getTourist(String uid) 
+	{
+		// TODO Auto-generated method stub
+		return regrepo.getTourist(uid);
+	}
 	
 }

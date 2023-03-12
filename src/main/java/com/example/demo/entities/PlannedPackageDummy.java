@@ -8,12 +8,16 @@ public class PlannedPackageDummy
 	Date lastdate_apply;
 	int packageidobj;
 	int employeeid;
-	public PlannedPackageDummy() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	String duration;
+	double packageprice;
+	
+	
+	
+	
+	
+	
 	public PlannedPackageDummy(Date startdate, Date lastdate, int availseats, Date lastdate_apply, int packageidobj,
-			int employeeid) {
+			int employeeid, String duration, double packageprice) {
 		super();
 		this.startdate = startdate;
 		this.lastdate = lastdate;
@@ -21,8 +25,32 @@ public class PlannedPackageDummy
 		this.lastdate_apply = lastdate_apply;
 		this.packageidobj = packageidobj;
 		this.employeeid = employeeid;
+		this.duration = duration;
+		this.packageprice = packageprice;
 	}
-	
+
+	public double getPackageprice() {
+		return packageprice;
+	}
+
+	public void setPackageprice(double packageprice) {
+		this.packageprice = packageprice;
+	}
+
+	public PlannedPackageDummy() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getDuration() {
+		return duration;
+	}
+
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
+
+
 	public Date getStartdate() {
 		return startdate;
 	}
@@ -59,12 +87,14 @@ public class PlannedPackageDummy
 	public void setEmployeeid(int employeeid) {
 		this.employeeid = employeeid;
 	}
+
 	@Override
 	public String toString() {
 		return "PlannedPackageDummy [startdate=" + startdate + ", lastdate=" + lastdate + ", availseats=" + availseats
 				+ ", lastdate_apply=" + lastdate_apply + ", packageidobj=" + packageidobj + ", employeeid=" + employeeid
-				+ "]";
+				+ ", duration=" + duration + "]";
 	}
+
 	
 	
 	

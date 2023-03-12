@@ -2,7 +2,11 @@ package com.example.demo.controllers;
 
 import java.sql.Date;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +20,9 @@ import com.example.demo.entities.Address;
 import com.example.demo.entities.Employee;
 import com.example.demo.entities.EmployeeDummy;
 import com.example.demo.entities.Login;
+import com.example.demo.entities.PassBasedEncryption;
 import com.example.demo.entities.Role;
+import com.example.demo.entities.SaltValue;
 import com.example.demo.services.AddressService;
 import com.example.demo.services.EmployeeService;
 import com.example.demo.services.LoginService;
@@ -40,19 +46,29 @@ public class EmployeeController {
 	@Autowired
 	AddressService aservice;
 	
+	@Autowired
+	SaltValue saltValue;
+	
+	@Autowired
+	JavaMailSender sender ;
 	@PostMapping("/empReg")
 	public Employee EmpRegister(@RequestBody EmployeeDummy empdummy)
 	{
 		
         Role remp = roleservice.getRole(3);
+	System.out.println("salt value = "+saltValue.getSalt());
 		
-		Login l = new Login(empdummy.getUid(),empdummy.getPwd(),1,remp);
+		String encrypted = PassBasedEncryption.generateSecurePassword(empdummy.getPwd(), saltValue.getSalt());
+		
+		Login l = new Login(empdummy.getUid(),encrypted,1,remp);
 		
 		Login lsavedemp = lservice.save(l);
 		
 		Address addr = new Address(empdummy.getAddressline(),empdummy.getDistrict(),empdummy.getCity(),empdummy.getState(),empdummy.getCountry(),empdummy.getPostalcode());
 	
 		Address asavedemp = aservice.save(addr);
+		
+	
 		
 		
 		Employee emp = new Employee(empdummy.getE_bdate(),empdummy.getE_hiredate(),empdummy.getE_fname()
@@ -63,12 +79,20 @@ public class EmployeeController {
 		Employee empsaved =empservice.save(emp);
 		System.out.println(empsaved);
 
-		return empsaved;
+		SimpleMailMessage mailmsg = new SimpleMailMessage();
 		
+		mailmsg.setFrom("takeatour28@gmail.com");
+		mailmsg.setTo(empsaved.getE_email());
+//		mailmsg.setTo("deshpandegaurav57@gmail.com");
+		mailmsg.setSubject("Registration Mail");
+		mailmsg.setText("You have succefully registered and entered to Take A Tour family.. userid : "+empdummy.getUid()+" Password : "+empdummy.getPwd());
+		sender.send(mailmsg);
+		return empsaved;
+			
 	}
 	
 	
-	@PostMapping(value="/uploadimage/{empid}",consumes = "multipart/form-data")
+	@PostMapping(value="/uploadimageemp/{empid}",consumes = "multipart/form-data")
 	public boolean uploadImage(@PathVariable("empid") int eid ,@RequestBody MultipartFile file )
 	{
 		System.out.println(eid);

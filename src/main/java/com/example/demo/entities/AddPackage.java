@@ -27,12 +27,9 @@ public class AddPackage {
 	
 	@Column
 	String packagename;
+
 	
-	@Column
-	double packageprice;
 	
-	@Column
-	String duration;
 	
 	@Column
 	int tourist_capacity;
@@ -42,7 +39,9 @@ public class AddPackage {
 	
 	@Column
 	String locations;
-	
+
+	@Column
+	String boardinglocation;
 	
 	@OneToMany( mappedBy = "packobj",fetch = FetchType.LAZY)
 	@Cascade(value=CascadeType.ALL)
@@ -55,32 +54,50 @@ public class AddPackage {
 	}
 
 
-	public AddPackage(int package_id, String packagename, double packageprice, String duration, int tourist_capacity,
-			String description, String locations) {
+
+
+
+
+	public AddPackage(String packagename,   int tourist_capacity,
+			String description, String locations, String boardinglocation, Set<PackageImage> packimageobj) {
 		super();
-		this.package_id = package_id;
 		this.packagename = packagename;
-		this.packageprice = packageprice;
-		this.duration = duration;
 		this.tourist_capacity = tourist_capacity;
 		this.description = description;
 		this.locations = locations.toLowerCase();
-	}
-	
-	
-
-
-	public AddPackage(int package_id, String packagename, double packageprice, String duration, int tourist_capacity,
-			String description, String locations, Set<PackageImage> packimageobj) {
-		super();
-		this.package_id = package_id;
-		this.packagename = packagename;
-		this.packageprice = packageprice;
-		this.duration = duration;
-		this.tourist_capacity = tourist_capacity;
-		this.description = description;
-		this.locations = locations.toLowerCase();
+		this.boardinglocation = boardinglocation.toLowerCase();
 		this.packimageobj = packimageobj;
+	}
+
+
+
+
+
+
+	public AddPackage(int package_id, String packagename,  int tourist_capacity,
+			String description, String locations, String boardinglocation, Set<PackageImage> packimageobj) {
+		super();
+		this.package_id = package_id;
+		this.packagename = packagename;
+		this.tourist_capacity = tourist_capacity;
+		this.description = description;
+		this.locations = locations.toLowerCase();
+		this.boardinglocation = boardinglocation.toLowerCase();
+		this.packimageobj = packimageobj;
+	}
+
+
+
+
+
+
+	public String getBoardinglocation() {
+		return boardinglocation;
+	}
+
+
+	public void setBoardinglocation(String boardinglocation) {
+		this.boardinglocation = boardinglocation;
 	}
 
 
@@ -104,24 +121,7 @@ public class AddPackage {
 	}
 
 
-	public double getPackageprice() {
-		return packageprice;
-	}
 
-
-	public void setPackageprice(double packageprice) {
-		this.packageprice = packageprice;
-	}
-
-
-	public String getDuration() {
-		return duration;
-	}
-
-
-	public void setDuration(String duration) {
-		this.duration = duration;
-	}
 
 
 	public int getTourist_capacity() {
@@ -169,8 +169,7 @@ public class AddPackage {
 
 	@Override
 	public String toString() {
-		return "AddPackage [package_id=" + package_id + ", packagename=" + packagename + ", packageprice="
-				+ packageprice + ", duration=" + duration + ", tourist_capacity=" + tourist_capacity + ", description="
+		return "AddPackage [package_id=" + package_id + ", packagename=" + packagename   + ", tourist_capacity=" + tourist_capacity + ", description="
 				+ description + ", locations=" + locations + ", packimageobj=";
 	}
 

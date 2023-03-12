@@ -23,15 +23,22 @@ public interface PlannedTourRepository extends JpaRepository<PlannedTour, Intege
 	@Query("update PlannedTour p set p.status =1 where p.tour_id =:id")
 	public int approveTour(int id);
 	
-	@Query(nativeQuery=true,value="select * from plannedtour  where packageid in(select package_id from package where locations like %:loc% ) and status=1")
-	public List<PlannedTour> getAllPackagesByLocation(String loc);
+	@Query(nativeQuery=true,value="select * from plannedtour  where packageid in(select package_id from package where locations like %:loc% and boardinglocation like %:bloc%) and status=1 and lastdate_apply>=now()")
+	public List<PlannedTour> getAllPackagesByLocation(String loc, String bloc);
 
 	
-	@Query("SELECT e FROM PlannedTour e where e.startdate >= :startdate ")
+	@Query("SELECT e FROM PlannedTour e where e.startdate >= :startdate and status=1 ")
 	List<PlannedTour> getAllPackagesByDate(Date startdate);
 
-	@Query(nativeQuery=true,value="SELECT * FROM plannedtour  where startdate >= now() ")
+	
+	@Query("SELECT e FROM PlannedTour e where e.packageidobj.package_id = :id and status=1")
+	public PlannedTour getPlannedtourbyid(int id);
+	
+	@Query(nativeQuery=true,value="SELECT * FROM plannedtour  where  lastdate_apply>=now() and  status=1")
 	public List<PlannedTour> getAllPackagesForTourist();
 //	@Query("Delete p from PlannedTour p where  p.tour_id =:id")
 //	public PlannedTour rejectTour(int id);
+
+	@Query("update PlannedTour p set p.availseats= :travellernumber where p.tour_id=:tourid")
+	public void updateavailableseats(int tourid, int travellernumber);
 }

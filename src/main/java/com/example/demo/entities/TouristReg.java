@@ -1,15 +1,28 @@
 package com.example.demo.entities;
 
+import java.sql.Date;
+
 public class TouristReg 
 {
 	String uid,pwd,fname,lname,email,contact,addressline,district,city,state,country;
+	Date bdate;
 	int postalcode;
 	public TouristReg() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Date getBdate() {
+		return bdate;
+	}
+
+	public void setBdate(Date bdate) {
+		this.bdate = bdate;
+	}
+
 	public TouristReg(String uid, String pwd, String fname, String lname, String email, String contact,
-			String addressline, String district, String city, String state, String country, int postalcode) {
+			String addressline, String district, String city, String state, String country, Date bdate,
+			int postalcode) {
 		super();
 		this.uid = uid;
 		this.pwd = pwd;
@@ -22,8 +35,10 @@ public class TouristReg
 		this.city = city;
 		this.state = state;
 		this.country = country;
+		this.bdate = bdate;
 		this.postalcode = postalcode;
 	}
+
 	public String getUid() {
 		return uid;
 	}
@@ -96,13 +111,13 @@ public class TouristReg
 	public void setPostalcode(int postalcode) {
 		this.postalcode = postalcode;
 	}
+
 	@Override
 	public String toString() {
 		return "TouristReg [uid=" + uid + ", pwd=" + pwd + ", fname=" + fname + ", lname=" + lname + ", email=" + email
 				+ ", contact=" + contact + ", addressline=" + addressline + ", district=" + district + ", city=" + city
-				+ ", state=" + state + ", country=" + country + ", postalcode=" + postalcode + "]";
+				+ ", state=" + state + ", country=" + country + ", bdate=" + bdate + ", postalcode=" + postalcode + "]";
 	}
-	
 	
 
 }
