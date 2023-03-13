@@ -22,8 +22,12 @@ public interface LoginRepository extends JpaRepository<Login, Integer>
 	@Query("update Login l set l.pwd=:newpwd where uid = :uid")
 	public int UpdatePasswordiInLogin(String newpwd,String uid);
 	
-//	@Modifying
-//	@Query("update Login l set l.pwd=:newpwd where uid = :uid")
-//	public int getUserInfouid(String newpwd,String uid);
+
+
+	//forget pass for employee
+	@Query("select l from Login l where uid = :uid")
+	public Optional<Login> getLoginforforgetpwd(String uid);
+
+		
 
 }

@@ -14,6 +14,8 @@ public class LoginService
 	@Autowired
 	LoginRepository loginrepo;
 	
+	
+	
 	public Login getLogin(String uid, String pwd)
 	{
 		Login l;
@@ -30,13 +32,33 @@ public class LoginService
 		return l;
 		
 	}
+	
+	
+	//forget password for employee
+		public Login getLoginforforgetpwd(String uid)
+		{
+			Login l;
+			Optional<Login> ol = loginrepo.getLoginforforgetpwd(uid);
+		
+			try
+			{
+				l = ol.get();
+			}
+			catch(Exception e)
+			{
+				l = null;
+			}
+			return l;
+			
+		}
+
+	
+	
 	public Login save (Login l)
 	{
 		return loginrepo.save(l);
 	}
-//	public int getUserInfo(String newpwd,String uid) {
-//		return loginrepo.getUserInfouid(newpwd,uid);
-//	}
+	
 	public int UpdatePasswordiInLogin(String newpwd,String uid) {
 		return loginrepo.UpdatePasswordiInLogin(newpwd,uid);
 	}

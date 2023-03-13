@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Employee;
+import com.example.demo.entities.Tourist;
 import com.example.demo.repositories.AddressRepository;
 import com.example.demo.repositories.EmployeeRepository;
 
@@ -55,14 +56,25 @@ public class EmployeeService
 		else
 			return false;
 	}
-public Employee getEmployee(int id) {
+
+
+	public Employee getEmployee(int id) {
 		
 		return emprepo.getEmployee(id);
 	}
 	
 	  		
-	
-	
+	public Employee getEmployeeforforgetpwd(String uid) {
+		// TODO Auto-generated method stub
+		return emprepo.getEmployeeforforgetpwd(uid);
+	}
+
+
+//	public int UpdatePasswordiInLogin(String encrypted, String uid)
+//	{
+//		return emprepo.UpdatePasswordiInLogin(encrypted,uid);
+//	}
+//	
 	
 	
 	

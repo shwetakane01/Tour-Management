@@ -11,11 +11,13 @@ public interface TouristRegRepository extends JpaRepository<Tourist, Integer>
 {
 	
 
-
 	@Query("SELECT t FROM Tourist t where t.loginid.login_id = :id ")
 	public Tourist getTourist(int id);
 	
 
+	
 	@Query("SELECT t FROM Tourist t where t.loginid.uid = :uid ")
-	public Tourist getTourist(String uid);
+	public Tourist getTouristforforgetpwd(String uid);
+   
+
 }
