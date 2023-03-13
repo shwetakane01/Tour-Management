@@ -39,6 +39,7 @@ public interface PlannedTourRepository extends JpaRepository<PlannedTour, Intege
 //	@Query("Delete p from PlannedTour p where  p.tour_id =:id")
 //	public PlannedTour rejectTour(int id);
 
+	@Modifying
 	@Query("update PlannedTour p set p.availseats= :travellernumber where p.tour_id=:tourid")
 	public void updateavailableseats(int tourid, int travellernumber);
 }

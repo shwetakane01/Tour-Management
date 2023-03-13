@@ -63,7 +63,7 @@ public class LoginController
 		
 		String mail = t.getT_email();
 
-		int update=loginservice.getUserInfo(encrypted,uid);
+		int update=loginservice.UpdatePasswordiInLogin(encrypted,uid);
 
 		SimpleMailMessage mailmsg = new SimpleMailMessage();
 		

@@ -34,9 +34,9 @@ public class LoginService
 	{
 		return loginrepo.save(l);
 	}
-	public int getUserInfo(String newpwd,String uid) {
-		return loginrepo.getUserInfouid(newpwd,uid);
-	}
+//	public int getUserInfo(String newpwd,String uid) {
+//		return loginrepo.getUserInfouid(newpwd,uid);
+//	}
 	public int UpdatePasswordiInLogin(String newpwd,String uid) {
 		return loginrepo.UpdatePasswordiInLogin(newpwd,uid);
 	}
