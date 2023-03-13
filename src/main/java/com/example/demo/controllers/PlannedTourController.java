@@ -53,7 +53,7 @@ public class PlannedTourController
 		
 		AddPackage adpkg = packageserv.getPackageInfo(packagedummy.getPackageidobj());
 	
-		PlannedTour plantour = new PlannedTour(packagedummy.getStartdate(),packagedummy.getLastdate(),packagedummy.getAvailseats(), packagedummy.getLastdate_apply(),packagedummy.getPackageprice(),packagedummy.getDuration(), adpkg, employee,0);
+		PlannedTour plantour = new PlannedTour(packagedummy.getStartdate(),packagedummy.getLastdate(),packagedummy.getAvailseats(), packagedummy.getLastdate_apply(),packagedummy.getPackageprice(), adpkg, employee,0);
 		
 		System.out.println("***********"+adpkg+"***********");
 		PlannedTour demo = ptserv.save(plantour);

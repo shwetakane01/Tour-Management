@@ -35,6 +35,8 @@ public class AddPackage {
 	int tourist_capacity;
 	
 	@Column
+	String duration;
+	@Column
 	String description;
 	
 	@Column
@@ -54,50 +56,30 @@ public class AddPackage {
 	}
 
 
-
-
-
-
-	public AddPackage(String packagename,   int tourist_capacity,
-			String description, String locations, String boardinglocation, Set<PackageImage> packimageobj) {
-		super();
-		this.packagename = packagename;
-		this.tourist_capacity = tourist_capacity;
-		this.description = description;
-		this.locations = locations.toLowerCase();
-		this.boardinglocation = boardinglocation.toLowerCase();
-		this.packimageobj = packimageobj;
-	}
-
-
-
-
-
-
-	public AddPackage(int package_id, String packagename,  int tourist_capacity,
-			String description, String locations, String boardinglocation, Set<PackageImage> packimageobj) {
+	public AddPackage(int package_id, String packagename, int tourist_capacity, String duration, String description,
+			String locations, String boardinglocation, Set<PackageImage> packimageobj) {
 		super();
 		this.package_id = package_id;
 		this.packagename = packagename;
 		this.tourist_capacity = tourist_capacity;
+		this.duration = duration;
 		this.description = description;
-		this.locations = locations.toLowerCase();
-		this.boardinglocation = boardinglocation.toLowerCase();
+		this.locations = locations;
+		this.boardinglocation = boardinglocation;
 		this.packimageobj = packimageobj;
 	}
 
 
-
-
-
-
-	public String getBoardinglocation() {
-		return boardinglocation;
-	}
-
-
-	public void setBoardinglocation(String boardinglocation) {
+	public AddPackage(String packagename, int tourist_capacity, String duration, String description, String locations,
+			String boardinglocation, Set<PackageImage> packimageobj) {
+		super();
+		this.packagename = packagename;
+		this.tourist_capacity = tourist_capacity;
+		this.duration = duration;
+		this.description = description;
+		this.locations = locations;
 		this.boardinglocation = boardinglocation;
+		this.packimageobj = packimageobj;
 	}
 
 
@@ -121,9 +103,6 @@ public class AddPackage {
 	}
 
 
-
-
-
 	public int getTourist_capacity() {
 		return tourist_capacity;
 	}
@@ -131,6 +110,16 @@ public class AddPackage {
 
 	public void setTourist_capacity(int tourist_capacity) {
 		this.tourist_capacity = tourist_capacity;
+	}
+
+
+	public String getDuration() {
+		return duration;
+	}
+
+
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 
 
@@ -154,26 +143,34 @@ public class AddPackage {
 	}
 
 
+	public String getBoardinglocation() {
+		return boardinglocation;
+	}
+
+
+	public void setBoardinglocation(String boardinglocation) {
+		this.boardinglocation = boardinglocation;
+	}
+
+
 	public Set<PackageImage> getPackimageobj() {
 		return packimageobj;
 	}
 
 
 	public void setPackimageobj(Set<PackageImage> packimageobj) {
-		for(PackageImage p : packimageobj)
-			p.setPackobj(this);
-		
+		for(PackageImage p :packimageobj)
+				p.setPackobj(this);
 		this.packimageobj = packimageobj;
 	}
 
 
 	@Override
 	public String toString() {
-		return "AddPackage [package_id=" + package_id + ", packagename=" + packagename   + ", tourist_capacity=" + tourist_capacity + ", description="
-				+ description + ", locations=" + locations + ", packimageobj=";
+		return "AddPackage [package_id=" + package_id + ", packagename=" + packagename + ", tourist_capacity="
+				+ tourist_capacity + ", duration=" + duration + ", description=" + description + ", locations="
+				+ locations + ", boardinglocation=" + boardinglocation + ", packimageobj=" + packimageobj + "]";
 	}
 
-
-	
 	
 }

@@ -31,8 +31,7 @@ public class PlannedTour
 	
 	@Column
 	double packageprice;
-	@Column
-	String duration;
+	
 	@OneToOne
 	@JoinColumn(name = "packageid")
 	AddPackage packageidobj;
@@ -52,7 +51,7 @@ public class PlannedTour
 	
 	
 	public PlannedTour(int tour_id, Date startdate, Date lastdate, int availseats, Date lastdate_apply,
-			double packageprice, String duration, AddPackage packageidobj, Employee employeeid, int status) {
+			double packageprice, AddPackage packageidobj, Employee employeeid, int status) {
 		super();
 		this.tour_id = tour_id;
 		this.startdate = startdate;
@@ -60,14 +59,24 @@ public class PlannedTour
 		this.availseats = availseats;
 		this.lastdate_apply = lastdate_apply;
 		this.packageprice = packageprice;
-		this.duration = duration;
 		this.packageidobj = packageidobj;
 		this.employeeid = employeeid;
 		this.status = status;
 	}
 
 
-
+	public PlannedTour(Date startdate, Date lastdate, int availseats, Date lastdate_apply, double packageprice,
+			 AddPackage packageidobj, Employee employeeid, int status) {
+					super();
+					this.startdate = startdate;
+					this.lastdate = lastdate;
+					this.availseats = availseats;
+					this.lastdate_apply = lastdate_apply;
+					this.packageprice = packageprice;
+					this.packageidobj = packageidobj;
+					this.employeeid = employeeid;
+					this.status = status;
+				}
 	public int getTour_id() {
 		return tour_id;
 	}
@@ -140,18 +149,6 @@ public class PlannedTour
 
 
 
-	public String getDuration() {
-		return duration;
-	}
-
-
-
-	public void setDuration(String duration) {
-		this.duration = duration;
-	}
-
-
-
 	public AddPackage getPackageidobj() {
 		return packageidobj;
 	}
@@ -188,19 +185,7 @@ public class PlannedTour
 
 
 
-	public PlannedTour(Date startdate, Date lastdate, int availseats, Date lastdate_apply, double packageprice,
-			String duration, AddPackage packageidobj, Employee employeeid, int status) {
-		super();
-		this.startdate = startdate;
-		this.lastdate = lastdate;
-		this.availseats = availseats;
-		this.lastdate_apply = lastdate_apply;
-		this.packageprice = packageprice;
-		this.duration = duration;
-		this.packageidobj = packageidobj;
-		this.employeeid = employeeid;
-		this.status = status;
-	}
+	
 
 
 
@@ -208,7 +193,7 @@ public class PlannedTour
 	public String toString() {
 		return "PlannedTour [tour_id=" + tour_id + ", startdate=" + startdate + ", lastdate=" + lastdate
 				+ ", availseats=" + availseats + ", lastdate_apply=" + lastdate_apply + ", packageprice=" + packageprice
-				+ ", duration=" + duration + ", packageidobj=" + packageidobj + ", employeeid=" + employeeid
+				+  ", packageidobj=" + packageidobj + ", employeeid=" + employeeid
 				+ ", status=" + status + "]";
 	}
 
