@@ -64,7 +64,7 @@ public class EmployeeController {
 		
 		String encrypted = PassBasedEncryption.generateSecurePassword(empdummy.getPwd(), saltValue.getSalt());
 		
-
+		System.out.println(encrypted);
 		
 		Login l = new Login(empdummy.getUid(),encrypted,1,remp);
 		
@@ -84,14 +84,14 @@ public class EmployeeController {
 		
 		
 		
-         SimpleMailMessage mailmsg = new SimpleMailMessage();
-		
-		mailmsg.setFrom("takeatour28@gmail.com");
-		mailmsg.setTo(empsaved.getE_email());
-//		mailmsg.setTo("deshpandegaurav57@gmail.com");
-		mailmsg.setSubject("Registration Mail");
-		mailmsg.setText("You have succefully registered and entered to Take A Tour family.. userid : "+empdummy.getUid()+"  Password : "+empdummy.getPwd());
-		sender.send(mailmsg);
+//         SimpleMailMessage mailmsg = new SimpleMailMessage();
+//
+//		mailmsg.setFrom("takeatour28@gmail.com");
+//		mailmsg.setTo(empsaved.getE_email());
+////		mailmsg.setTo("deshpandegaurav57@gmail.com");
+//		mailmsg.setSubject("Registration Mail");
+//		mailmsg.setText("You have succefully registered and entered to Take A Tour family.. userid : "+empdummy.getUid()+"  Password : "+empdummy.getPwd());
+//		sender.send(mailmsg);
 		System.out.println(empsaved);
 
 		return empsaved;
