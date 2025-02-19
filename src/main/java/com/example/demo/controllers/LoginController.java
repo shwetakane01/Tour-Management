@@ -84,12 +84,12 @@ public class LoginController
 		}
 		
 		 update=loginservice.UpdatePasswordiInLogin(encrypted,uid);
-			SimpleMailMessage mailmsg = new SimpleMailMessage();
-			mailmsg.setFrom("takeatour28@gmail.com");
-			mailmsg.setTo(mail);
-			mailmsg.setSubject("New Password");
-			mailmsg.setText("Your new password: "+newpwd);
-			sender.send(mailmsg);
+//			SimpleMailMessage mailmsg = new SimpleMailMessage();
+//			mailmsg.setFrom("takeatour28@gmail.com");
+//			mailmsg.setTo(mail);
+//			mailmsg.setSubject("New Password");
+//			mailmsg.setText("Your new password: "+newpwd);
+//			sender.send(mailmsg);
 		}
 		System.out.println(".........."+l);
 			return l;

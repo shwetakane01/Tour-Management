@@ -69,14 +69,14 @@ public class TouristRegController
 		
 		Tourist t = new Tourist(treg.getFname(),treg.getLname(),treg.getEmail(),treg.getContact(),treg.getBdate(),asaved,lsaved);
 		
-		SimpleMailMessage mailmsg = new SimpleMailMessage();
-		
-		mailmsg.setFrom("takeatour28@gmail.com");
-		mailmsg.setTo(t.getT_email());
-//		mailmsg.setTo("deshpandegaurav57@gmail.com");
-		mailmsg.setSubject("Registration Mail");
-		mailmsg.setText("You have succefully registered and entered to Take A Tour family.. userid : "+treg.getUid()+" Password : "+treg.getPwd());
-		sender.send(mailmsg);
+//		SimpleMailMessage mailmsg = new SimpleMailMessage();
+//
+//		mailmsg.setFrom("takeatour28@gmail.com");
+//		mailmsg.setTo(t.getT_email());
+////		mailmsg.setTo("deshpandegaurav57@gmail.com");
+//		mailmsg.setSubject("Registration Mail");
+//		mailmsg.setText("You have succefully registered and entered to Take A Tour family.. userid : "+treg.getUid()+" Password : "+treg.getPwd());
+//		sender.send(mailmsg);
 		
 		return trstserv.saveTourist(t);
 		
